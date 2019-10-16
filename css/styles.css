@@ -1,0 +1,19 @@
+.container {
+  border: 1px solid red;
+  width: 200px;
+  height: 200px;
+  margin: 100px auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoItem {
+  font-family: sans-serif;
+}
+
+.todoItem--done {
+  text-decoration: line-through;
+}
