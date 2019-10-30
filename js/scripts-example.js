@@ -13,7 +13,7 @@ function init() {
   const inputField = createElement({
     tag: 'input',
     parent: container,
-    attributes: { type: 'text' }
+    type: 'text'
   });
 
   inputField.addEventListener('keyup', event => {
@@ -24,7 +24,7 @@ function init() {
       createElement({
         className: 'todoItem',
         innerHTML: inputField.value,
-        dataId: id,
+        ['data-id']: id,
         parent: container,
         onclick: e => {
           const element = e.target;
@@ -49,7 +49,7 @@ function init() {
     createElement({
       className: 'todoItem',
       innerHTML: item.label,
-      dataId: item.id,
+      ['data-id']: item.id,
       parent: container,
       onclick: e => {
         const element = e.target;
@@ -86,8 +86,6 @@ function createElement({
   tag = 'div',
   parent = document.body,
   nextSibling,
-  dataId = null,
-  attributes = {},
   ...rest
 }) {
   const element = document.createElement(tag);
@@ -95,12 +93,6 @@ function createElement({
   Object.entries(rest).forEach(([key, value]) => {
     element[key] = value;
   });
-
-  Object.entries(attributes).forEach(([key, value]) => {
-    element.setAttribute(key, value);
-  });
-
-  element['data-id'] = dataId;
 
   if (nextSibling) {
     console.log(nextSibling);
